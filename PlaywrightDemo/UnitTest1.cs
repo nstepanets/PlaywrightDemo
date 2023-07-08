@@ -29,6 +29,9 @@ public class Tests
         {
             Path = "test.jpg"
         });
+
+        var iSGetStartPageOpened = await page.Locator("xpath=//h1[text()='Installation']").IsVisibleAsync();
+        Assert.That(iSGetStartPageOpened, Is.True);
      
     }
 }
