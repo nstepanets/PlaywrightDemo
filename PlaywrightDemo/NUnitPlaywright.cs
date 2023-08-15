@@ -1,4 +1,5 @@
-﻿using Microsoft.Playwright.NUnit;
+﻿using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
 
 namespace PlaywrightDemo
 {
@@ -13,8 +14,8 @@ namespace PlaywrightDemo
 		[Test]
 		public async Task NUnitTest()
 		{
-			await Page.ClickAsync("xpath=//a[contains(@class, 'getStarted')]");
-			await Page.ClickAsync("xpath=//h1[text()='Installation']");
+			var getStartedButton = Page.Locator("a", new PageLocatorOptions { HasTextString = "Get started"});
+			await getStartedButton.ClickAsync();
 
 			await Expect(Page.Locator("xpath=//h1[text()='Installation']")).ToBeVisibleAsync();
 		}
