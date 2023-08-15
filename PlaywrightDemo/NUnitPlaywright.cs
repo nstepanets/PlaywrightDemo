@@ -15,9 +15,10 @@ namespace PlaywrightDemo
 		public async Task NUnitTest()
 		{
 			var getStartedButton = Page.Locator("a", new PageLocatorOptions { HasTextString = "Get started"});
-			await getStartedButton.ClickAsync();
+			var installationPageTitle = Page.Locator("xpath=//h1[text()='Installation']");
 
-			await Expect(Page.Locator("xpath=//h1[text()='Installation']")).ToBeVisibleAsync();
+            await getStartedButton.ClickAsync();
+			await Expect(installationPageTitle).ToBeVisibleAsync();
 		}
 	}
 }
